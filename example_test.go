@@ -1,4 +1,4 @@
-package nip_test
+package guslookup_test
 
 import (
 	"context"

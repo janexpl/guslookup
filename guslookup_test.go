@@ -1,4 +1,4 @@
-package nip
+package guslookup
 
 import (
 	"context"
