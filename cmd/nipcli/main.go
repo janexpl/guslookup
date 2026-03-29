@@ -144,8 +144,7 @@ func execute(ctx context.Context, cfg cliConfig, stdout io.Writer, stderr io.Wri
 	for _, nipValue := range cfg.nips {
 		company, err := lookupWithTimeout(ctx, cfg.timeout, client, nipValue)
 		if err != nil {
-			var fault *nip.FaultError
-			if errors.As(err, &fault) {
+			if fault, ok := errors.AsType[*nip.FaultError](err); ok {
 				results = append(results, lookupResult{
 					NIP:   nipValue,
 					Error: fault,
